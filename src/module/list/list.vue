@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img src="./img/logo.png">
-    <h1>测试</h1>
+    <img src="../../img/logo.png">
+    <h1>list</h1>
   </div>
 </template>
 
