@@ -46,11 +46,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-var pages = utils.getEntries('./src/module/**/*.html')
+let pages = utils.getEntries(['.html'], './src', false)
 for(var page in pages) {
   // 配置生成的html文件，定义路径等
   var conf = {
-    filename: page + '.html',
+    filename: `${page}.html`,
     template: pages[page], //模板路径
     inject: true,
     // excludeChunks 允许跳过某些chunks, 而chunks告诉插件要引用entry里面的哪几个入口

@@ -3,8 +3,8 @@ const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
-// glob模块，用于读取webpack入口目录文件
-var glob = require('glob');
+const glob = require('glob')
+const fs = require('fs')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -101,27 +101,57 @@ exports.createNotifierCallback = () => {
     })
   }
 }
-exports.getEntries = function (globPath) {
-  var entries = {}
-  /**
-   * 读取src目录,并进行路径裁剪
-   */
-  glob.sync(globPath).forEach(function (entry) {
-    /**
-     * path.basename 提取出用 ‘/' 隔开的path的最后一部分，除第一个参数外其余是需要过滤的字符串
-     * path.extname 获取文件后缀
-     */
-      // var basename = path.basename(entry, path.extname(entry), 'router.js') // 过滤router.js
-      // ***************begin***************
-      // 当然， 你也可以加上模块名称, 即输出如下： { module/main: './src/module/index/main.js', module/test: './src/module/test/test.js' }
-      // 最终编译输出的文件也在module目录下， 访问路径需要时 localhost:8080/module/index.html
-      // slice 从已有的数组中返回选定的元素, -3 倒序选择，即选择最后三个
-    var tmp = entry.split('/').splice(-3)
-    var moduleName = tmp.slice(1, 2);
-    // ***************end***************
-    entries[moduleName] = entry
-  });
-  // console.log(entries);
-  // 获取的主入口如下： { main: './src/module/index/main.js', test: './src/module/test/test.js' }
-  return entries;
+/*
+* 动态设置多入口文件函数
+* @param extensions {array} 例子['.js','html]
+* @param foldersName {string} 例子 './src' 以本文件为坐标
+* @param exclude 路径中需要排除的文件夹，{string} 例子 ['/module'] 路径中就不会有 /module
+* @param fullPath {boolean} 默认true 是否获取完整路径
+* 不完整路径 { detail: '../src/module/detail/detail.js'}
+* 完整路径 { 'module/detail/detail': '../src/module/detail/detail.js',
+* */
+exports.getEntries = function(extensions, foldersName, fullPath = true, excludeName) {
+  const res = {}
+  extensions = extensions || ['.js']
+  excludeName = excludeName || ''
+  extensions.forEach(function(validExt) {
+    const srcDir = foldersName
+    const files = glob.sync(srcDir + "/**/*" + validExt).filter(function(filepath) {
+      // 获取文件的后缀(包括.)
+      const extension = path.extname(filepath)
+      // 获取文件名，把文件后缀去掉
+      const basename = path.basename(filepath, validExt)
+      // 使用文件后缀名判断文件类型
+      if (extension != validExt) return false
+      // 入口文件不能以'_'开头
+      if (basename[0] == '_') return false
+      // 入口文件必须以：英文、数字、-、_开头
+      if (!basename.match(/^[A-Za-z_0-9-]+$/)) return false
+
+      // 生成一个15字节的Buffer实例
+      let buf = new Buffer(15)
+      // 打开文件
+      let fd = fs.openSync(filepath, 'r')
+      // 读取文件前13个字符
+      fs.readSync(fd, buf, 0, 15)
+      // 把二进制转换成字符
+      let directive = buf.toString()
+      // 关闭打开的文件
+      fs.closeSync(fd)
+      // 如果文件的前15个字符 === /!*not entry*!/ 就不作为入口文件
+      return directive !== '/!*not entry*!/'
+    })
+
+    files.forEach(function(filepath) {
+      var key = path.relative(foldersName + excludeName, filepath)
+      if (fullPath) {
+        key = key.replace(validExt, '')
+      } else {
+        key = path.basename(filepath, validExt)
+      }
+
+      res[key] = filepath
+    })
+  })
+  return res
 }
