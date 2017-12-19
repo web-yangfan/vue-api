@@ -8,6 +8,8 @@
           | 全局配置
         ul.menu-sub
           li
+            a(href="javascript:;", @click="show('lifecycle')") 生命周期
+          li
             a(href="javascript:;", @click="show('silent')") silent
           li
             a(href="javascript:;", @click="show('optionMergeStrategies')") optionMergeStrategies
@@ -217,20 +219,20 @@
             a(href="javascript:;") vm.$destroy
 
       li
-        a(href="javascript:;") 指令
+        a(href="javascript:;")
+          small html
+          | 指令
           ul.menu-sub
             li
               a(href="javascript:;") v-text
             li
               a(href="javascript:;") v-html
             li
-              a(href="javascript:;") v-show
+              a(href="javascript:;", @click="show('v_show')") v-show
             li
-              a(href="javascript:;") v-if
+              a(href="javascript:;", @click="show('v_if')") v-if、v-else-if、v-else
             li
-              a(href="javascript:;") v-else
-            li
-              a(href="javascript:;") v-else-if
+              a(href="javascript:;", @click="show('_key')") key属性
             li
               a(href="javascript:;") v-for
             li
@@ -240,41 +242,12 @@
             li
               a(href="javascript:;") v-model
             li
-              a(href="javascript:;") v-pre
+              a(href="javascript:;", @click="show('v_pre')") v-pre
             li
               a(href="javascript:;") v-cloak
             li
               a(href="javascript:;") v-once
 
-      li
-        a(href="javscript::") 特殊属性
-        ul.menu-sub
-          li
-            a(href="javascript:;") v-text
-          li
-            a(href="javascript:;") v-html
-          li
-            a(href="javascript:;") v-show
-          li
-            a(href="javascript:;") v-if
-          li
-            a(href="javascript:;") v-else
-          li
-            a(href="javascript:;") v-else-if
-          li
-            a(href="javascript:;") v-for
-          li
-            a(href="javascript:;") v-on
-          li
-            a(href="javascript:;") v-bind
-          li
-            a(href="javascript:;") v-model
-          li
-            a(href="javascript:;") v-pre
-          li
-            a(href="javascript:;") v-cloak
-          li
-            a(href="javascript:;") v-once
       li
         a(href="javascript:;") 内置的组件
         ul.menu-sub
@@ -335,7 +308,5 @@ export default {
 </script>
 
 <style>
-#app {
 
-}
 </style>

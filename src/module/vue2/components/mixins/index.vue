@@ -86,7 +86,5 @@ new Vue({
       return {
       }
     }
-
   }
-
 </script>

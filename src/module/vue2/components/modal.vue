@@ -8,6 +8,7 @@
 </style>
 <script>
   // 全局配置
+  import lifecycle from './lifecycle/index.vue'
   import silent from './silent/silent'
   // 全局API
   import extend from './extend/index.vue'
@@ -37,15 +38,18 @@
   // 实例方法/生命周期
   import $next_tick from './$next_tick/index.vue'
   // 指令
+  import v_pre from './v_pre/index.vue'
+  import v_if from './v_if/index.vue'
+  import v_show from './v_show/index.vue'
+  import _key from './key/index.vue'
   // 特殊属性
   // 内置组件
   export default {
     props: ['currentView', 'isShow'],
-    data() {
+    data () {
       return {}
     },
     mounted() {
-
     },
     methods: {
       hide() {
@@ -53,6 +57,7 @@
       }
     },
     components: {
+      lifecycle,
       silent,
       extend,
       next_tick,
@@ -68,7 +73,11 @@
       directives,
       filters,
       _mixins,
-      $next_tick
+      $next_tick,
+      v_pre,
+      v_if,
+      v_show,
+      _key
 
     },
     watch: {}

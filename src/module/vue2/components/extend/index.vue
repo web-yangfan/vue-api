@@ -158,23 +158,22 @@
   import Vue from 'vue'
   export default {
     props: [],
-    data() {
+    data () {
       return {
       }
     },
-    mounted() {
+    mounted () {
     },
     methods: {
-      demo1(){
+      demo1 () {
         let Profile = Vue.extend(component)
         new Profile().$mount('.mount-point')
       },
-      demo2(){
+      demo2 () {
         component1.alert('弹窗')
       }
     },
     components: {},
     watch: {}
   }
-
 </script>

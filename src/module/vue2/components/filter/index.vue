@@ -68,7 +68,5 @@ Vue.filter('filterB', (value) => {
       return {
       }
     }
-
   }
-
 </script>

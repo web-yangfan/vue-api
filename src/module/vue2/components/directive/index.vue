@@ -86,17 +86,16 @@
 
 </style>
 <script>
-
   export default {
     props: [],
-    data() {
+    data () {
       return {
         demo1: {
           str: ''
         }
       }
     },
-    mounted() {
+    mounted () {
     },
     methods: {},
     components: {},
