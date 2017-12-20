@@ -39,17 +39,17 @@
           li
             a(href="javascript:;", @click="show('set')") Vue.set
           li
-            a(href="javascript:;", @click="show('_delete')") Vue.delete
+            a(href="javascript:;", @click="show('v_delete')") Vue.delete
           li
             a(href="javascript:;", @click="show('directive')") Vue.directive
           li
-            a(href="javascript:;", @click="show('_filter')") Vue.filter
+            a(href="javascript:;", @click="show('v_filter')") Vue.filter
           li
-            a(href="javascript:;", @click="show('_component')") Vue.component
+            a(href="javascript:;", @click="show('v_component')") Vue.component
           li
-            a(href="javascript:;", @click="show('_use')") Vue.use
+            a(href="javascript:;", @click="show('v_use')") Vue.use
           li
-            a(href="javascript:;", @click="show('_mixin')") Vue.mixin
+            a(href="javascript:;", @click="show('v_mixin')") Vue.mixin
           li
             a(href="javascript:;", @click="show('compile')") Vue.compile
           li
@@ -121,7 +121,7 @@
           li
             a(href="javascript:;") parent
           li
-            a(href="javascript:;", @click="show('_mixins')") mixins
+            a(href="javascript:;", @click="show('v_mixins')") mixins
           li
             a(href="javascript:;") extends
           li
@@ -214,7 +214,7 @@
           li
             a(href="javascript:;") vm.$forceUpdate
           li
-            a(href="javascript:;", @click="show('$next_tick')") vm.$nextTick
+            a(href="javascript:;", @click="show('v_next_tick')") vm.$nextTick
           li
             a(href="javascript:;") vm.$destroy
 
@@ -232,9 +232,9 @@
             li
               a(href="javascript:;", @click="show('v_if')") v-if、v-else-if、v-else
             li
-              a(href="javascript:;", @click="show('_key')") key属性
+              a(href="javascript:;", @click="show('v_key')") key属性
             li
-              a(href="javascript:;") v-for
+              a(href="javascript:;", @click="show('v_for')") v-for
             li
               a(href="javascript:;") v-on
             li
@@ -244,7 +244,7 @@
             li
               a(href="javascript:;", @click="show('v_pre')") v-pre
             li
-              a(href="javascript:;") v-cloak
+              a(href="javascript:;", @click="show('v_cloak')") v-cloak
             li
               a(href="javascript:;") v-once
 
@@ -261,7 +261,50 @@
             a(href="javascript:;") keep-alive
           li
             a(href="javascript:;") slot
-
+      li
+        a(href="javascript:;")
+          small Array
+          | 观察数组变异方法
+        ul.menu-sub
+          li
+            a(href="javascript:;", @click="show('array')") push
+          li
+            a(href="javascript:;", @click="show('array')") pop
+          li
+            a(href="javascript:;", @click="show('array')") shift
+          li
+            a(href="javascript:;", @click="show('array')") unshift
+          li
+            a(href="javascript:;", @click="show('array')") splice
+          li
+            a(href="javascript:;", @click="show('array')") splice
+          li
+            a(href="javascript:;", @click="show('array')") sort
+          li
+            a(href="javascript:;", @click="show('array')") reverse
+          li
+            a(href="javascript:;", @click="show('array')") filter
+          li
+            a(href="javascript:;", @click="show('array')") concat
+          li
+            a(href="javascript:;", @click="show('array')") slice
+      li
+        a(href="javascript:;")
+          small modifiers
+          | 修饰符
+        ul.menu-sub
+          li
+            a(href="javascript:;", @click="show('modifiers')") stop
+          li
+            a(href="javascript:;", @click="show('modifiers')") prevent
+          li
+            a(href="javascript:;", @click="show('modifiers')") capture
+          li
+            a(href="javascript:;", @click="show('modifiers')") self
+          li
+            a(href="javascript:;", @click="show('modifiers')") once
+          li
+            a(href="javascript:;", @click="show('modifiers')") 按键修饰符
 </template>
 
 <script>

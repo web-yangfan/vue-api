@@ -14,12 +14,12 @@
   import extend from './extend/index.vue'
   import next_tick from './next_tick/index.vue'
   import set from './set/index.vue'
-  import _delete from './delete/index.vue'
+  import v_delete from './delete/index.vue'
   import directive from './directive/index.vue'
-  import _filter from './filter/index.vue'
-  import _component from './component/index.vue'
-  import _use from './use/index.vue'
-  import _mixin from './mixin/index.vue'
+  import v_filter from './filter/index.vue'
+  import v_component from './component/index.vue'
+  import v_use from './use/index.vue'
+  import v_mixin from './mixin/index.vue'
   import compile from './compile/index.vue'
   import version from './version/index.vue'
   // 选项/资源
@@ -29,30 +29,36 @@
   // 选项/生命周期钩子
   // 选项/资源
   // 选项/组合
-  import _mixins from './mixins/index.vue'
+  import v_mixins from './mixins/index.vue'
   // 选项/其他
   // 实例属性
   // 实例方法/数据
   // 实例方法/事件
 
   // 实例方法/生命周期
-  import $next_tick from './$next_tick/index.vue'
+  import v_next_tick from './$next_tick/index.vue'
   // 指令
   import v_pre from './v_pre/index.vue'
   import v_if from './v_if/index.vue'
   import v_show from './v_show/index.vue'
-  import _key from './key/index.vue'
+  import v_key from './key/index.vue'
+  import v_for from './v_for/index.vue'
+  import v_cloak from './v_cloak/index.vue'
+  // 变异数组方法
+  import array from './array/index.vue'
   // 特殊属性
+  // 修饰符
+  import modifiers from './modifiers/index.vue'
   // 内置组件
   export default {
     props: ['currentView', 'isShow'],
     data () {
       return {}
     },
-    mounted() {
+    mounted () {
     },
     methods: {
-      hide() {
+      hide () {
         this.$emit('hide')
       }
     },
@@ -62,22 +68,26 @@
       extend,
       next_tick,
       set,
-      _delete,
+      v_delete,
       directive,
-      _filter,
-      _component,
-      _use,
-      _mixin,
+      v_filter,
+      v_component,
+      v_use,
+      v_mixin,
       compile,
       version,
       directives,
       filters,
-      _mixins,
-      $next_tick,
+      v_mixins,
+      v_next_tick,
       v_pre,
       v_if,
       v_show,
-      _key
+      v_key,
+      v_for,
+      array,
+      modifiers,
+      v_cloak
 
     },
     watch: {}
