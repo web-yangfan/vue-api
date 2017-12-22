@@ -50,6 +50,8 @@
   // 修饰符
   import modifiers from './modifiers/index.vue'
   // 内置组件
+
+  import v_model from './v_model/index.vue'
   export default {
     props: ['currentView', 'isShow'],
     data () {
@@ -87,10 +89,10 @@
       v_for,
       array,
       modifiers,
-      v_cloak
+      v_cloak,
+      v_model
 
     },
     watch: {}
   }
-
 </script>

@@ -240,8 +240,6 @@
             li
               a(href="javascript:;") v-bind
             li
-              a(href="javascript:;") v-model
-            li
               a(href="javascript:;", @click="show('v_pre')") v-pre
             li
               a(href="javascript:;", @click="show('v_cloak')") v-cloak
@@ -305,6 +303,25 @@
             a(href="javascript:;", @click="show('modifiers')") once
           li
             a(href="javascript:;", @click="show('modifiers')") 按键修饰符
+      li.modifiers
+        a(href="javascript:;")
+          small modifiers
+          | v-model
+        ul.menu-sub
+          li
+            a(href="javascript:;", @click="show('v_model')")
+              small v-model
+              | .lazy
+          li
+            a(href="javascript:;", @click="show('v_model')")
+              small v-model
+              | .number
+          li
+            a(href="javascript:;", @click="show('v_model')")
+              small v-model
+              | .trim
+          li
+            a(href="javascript:;", @click="show('v_model')") 表单绑定v-model例子
 </template>
 
 <script>
@@ -317,7 +334,7 @@ import modal from './components/modal.vue'
 
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
       isShow: false,
       currentView: ''
@@ -326,19 +343,19 @@ export default {
   components: {
     modal
   },
-  mounted() {
+  mounted () {
     this.highlight()
   },
   methods: {
-    show(name) {
+    show (name) {
       this.currentView = name
       this.isShow = true
       this.highlight()
     },
-    hide(){
+    hide () {
       this.isShow = false
     },
-    highlight() {
+    highlight () {
       hljs.initHighlightingOnLoad()
       $(function () {
         $('pre code').each(function (i, block) {
