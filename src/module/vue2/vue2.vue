@@ -60,7 +60,7 @@
           li
             a(href="javascript:;") data
           li
-            a(href="javascript:;") props
+            a(href="javascript:;", @click="show('v_props')") props
           li
             a(href="javascript:;") propsData
           li
@@ -137,8 +137,6 @@
           li
             a(href="javascript:;") functional
           li
-            a(href="javascript:;") model
-          li
             a(href="javascript:;") inheritAttrs
           li
             a(href="javascript:;") comments
@@ -147,14 +145,6 @@
         ul.menu-sub
           li
             a(href="javascript:;") name
-          li
-            a(href="javascript:;") delimiters
-          li
-            a(href="javascript:;") functional
-          li
-            a(href="javascript:;") model
-          li
-            a(href="javascript:;") inheritAttrs
           li
             a(href="javascript:;") comments
           li
@@ -204,7 +194,7 @@
           li
             a(href="javascript:;") vm.$off
           li
-            a(href="javascript:;") vm.$emit
+            a(href="javascript:;", @click="show('v_emit')") vm.$emit
 
       li
         a(href="javascript:;") 实例方法/生命周期
@@ -322,6 +312,17 @@
               | .trim
           li
             a(href="javascript:;", @click="show('v_model')") 表单绑定v-model例子
+      li.modifiers
+        a(href="javascript:;")
+          small
+          | 组件通信
+        ul.menu-sub
+          li
+            a(href="javascript:;", @click="show('v_props')") props
+          li
+            a(href="javascript:;", @click="show('v_emit')") v-on和$emit
+          li
+            a(href="javascript:;", @click="show('v_model')") v-model和$emit
 </template>
 
 <script>

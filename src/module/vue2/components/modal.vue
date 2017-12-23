@@ -25,6 +25,8 @@
   // 选项/资源
   import directives from './directives/index.vue'
   import filters from './filters/index.vue'
+  // 选项/数据
+  import v_props from './v_props/index.vue'
   // 选项/DOM
   // 选项/生命周期钩子
   // 选项/资源
@@ -34,6 +36,7 @@
   // 实例属性
   // 实例方法/数据
   // 实例方法/事件
+  import v_emit from './emit/index.vue'
 
   // 实例方法/生命周期
   import v_next_tick from './$next_tick/index.vue'
@@ -90,7 +93,9 @@
       array,
       modifiers,
       v_cloak,
-      v_model
+      v_model,
+      v_props,
+      v_emit
 
     },
     watch: {}
