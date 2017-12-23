@@ -34,6 +34,7 @@
   import v_mixins from './mixins/index.vue'
   // 选项/其他
   // 实例属性
+  import parent from './parent/index.vue'
   // 实例方法/数据
   // 实例方法/事件
   import v_emit from './emit/index.vue'
@@ -53,8 +54,9 @@
   // 修饰符
   import modifiers from './modifiers/index.vue'
   // 内置组件
-
   import v_model from './v_model/index.vue'
+  // 其他
+  import v_parent from './parent/index.vue'
   export default {
     props: ['currentView', 'isShow'],
     data () {
@@ -95,8 +97,8 @@
       v_cloak,
       v_model,
       v_props,
-      v_emit
-
+      v_emit,
+      v_parent
     },
     watch: {}
   }
