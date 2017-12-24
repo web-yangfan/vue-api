@@ -160,7 +160,7 @@
           li
             a(href="javascript:;") vm.$root
           li
-            a(href="javascript:;") vm.$children
+            a(href="javascript:;", @click="show('v_children')") vm.$children
           li
             a(href="javascript:;") vm.$slots
           li
@@ -324,9 +324,9 @@
           li
             a(href="javascript:;", @click="show('v_model')") v-model和$emit
           li
-            a(href="javascript:;", @click="show('bus')") 非父子组件通信bus
-          li
             a(href="javascript:;", @click="show('v_parent')") vm.$parent
+          li
+            a(href="javascript:;", @click="show('v_children')") vm.$children
 </template>
 
 <script>
