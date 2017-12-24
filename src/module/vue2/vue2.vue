@@ -166,7 +166,7 @@
           li
             a(href="javascript:;") vm.$scopedSlots
           li
-            a(href="javascript:;") vm.$refs
+            a(href="javascript:;", @click="show('v_refs')") vm.$refs
           li
             a(href="javascript:;") vm.$isServer
           li

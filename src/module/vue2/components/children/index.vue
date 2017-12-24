@@ -5,7 +5,7 @@
       <li><strong>说明:</strong> <span>可以直接访问该子组件的实例或组件，可以递归向下无限访问，直最底层根实例</span></li>
       <li><strong class="warning">警告:</strong> <code>$children 需要遍历，如果组件比较多的时候，比较麻烦，尤其是组件动态渲染时。可以使用ref和$refs取代 $children</code></li>
     </ul>
-
+<h5>例子：</h5>
 <pre v-pre class="mb48">
   <code class="html">
 &lt;template&gt;
@@ -49,7 +49,6 @@
 <pre>
   <code class="hljs">
   export default {
-    name: 'demo1',
     data () {
       return {
         message: '我是子组件内容'
@@ -65,6 +64,7 @@
       <demo></demo>
       <button @click="handlerEvent">父组件按钮</button>
     </div>
+
   </div>
 </template>
 

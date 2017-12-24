@@ -36,6 +36,7 @@
   // 实例属性
   import v_parent from './parent/index.vue'
   import v_children from './children/index.vue'
+  import v_refs from './refs/index.vue'
   // 实例方法/数据
   // 实例方法/事件
   import v_emit from './emit/index.vue'
@@ -100,7 +101,8 @@
       v_props,
       v_emit,
       v_parent,
-      v_children
+      v_children,
+      v_refs
     },
     watch: {}
   }
