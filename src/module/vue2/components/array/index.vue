@@ -19,7 +19,7 @@
         <ol>
           <li><strong>filter</strong></li>
           <li><strong>concat</strong></li>
-          <li><strong>slice<</strong></li>
+          <li><strong>slice</strong></li>
         </ol>
       </li>
     </ul>

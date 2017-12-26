@@ -57,6 +57,7 @@
   import modifiers from './modifiers/index.vue'
   // 内置组件
   import v_model from './v_model/index.vue'
+  import v_slot from './slot/index.vue'
   // 其他
 
   export default {
@@ -102,7 +103,8 @@
       v_emit,
       v_parent,
       v_children,
-      v_refs
+      v_refs,
+      v_slot
     },
     watch: {}
   }

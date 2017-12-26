@@ -248,7 +248,7 @@
           li
             a(href="javascript:;") keep-alive
           li
-            a(href="javascript:;") slot
+            a(href="javascript:;", @click="show('v_slot')") slot
       li
         a(href="javascript:;")
           small Array
@@ -327,6 +327,8 @@
             a(href="javascript:;", @click="show('v_parent')") vm.$parent
           li
             a(href="javascript:;", @click="show('v_children')") vm.$children
+          li
+            a(href="javascript:;", @click="show('v_refs')") vm.$refs
 </template>
 
 <script>
