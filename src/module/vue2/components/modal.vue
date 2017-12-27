@@ -37,6 +37,7 @@
   import v_parent from './parent/index.vue'
   import v_children from './children/index.vue'
   import v_refs from './refs/index.vue'
+  import v__slot from './$slot/index.vue'
   // 实例方法/数据
   // 实例方法/事件
   import v_emit from './emit/index.vue'
@@ -104,7 +105,8 @@
       v_parent,
       v_children,
       v_refs,
-      v_slot
+      v_slot,
+      v__slot
     },
     watch: {}
   }

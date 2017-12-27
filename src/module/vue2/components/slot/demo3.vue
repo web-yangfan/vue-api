@@ -1,6 +1,6 @@
 <template>
   <div>
-   <slot msg="来自子组件的内容"></slot>
+   <slot :msg="childMsg"></slot>
   </div>
 </template>
 
@@ -13,6 +13,7 @@
     props: [],
     data () {
       return {
+        childMsg: '来自子组件的内容!!'
       }
     }
   }

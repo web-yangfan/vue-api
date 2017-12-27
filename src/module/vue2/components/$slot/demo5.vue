@@ -23,8 +23,7 @@
   export default {
     props: [],
     data () {
-      return {
-      }
+      return {}
     },
     mounted () {
       var header = this.$slots.header

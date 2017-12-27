@@ -162,7 +162,7 @@
           li
             a(href="javascript:;", @click="show('v_children')") vm.$children
           li
-            a(href="javascript:;") vm.$slots
+            a(href="javascript:;", @click="show('v__slot')") vm.$slots
           li
             a(href="javascript:;") vm.$scopedSlots
           li
