@@ -113,7 +113,7 @@
           li
             a(href="javascript:;", @click="show('filters')") filters
           li
-            a(href="javascript:;") components
+            a(href="javascript:;", @click="show('v_component')") components
 
       li
         a(href="javascript:;") 选项/组合
