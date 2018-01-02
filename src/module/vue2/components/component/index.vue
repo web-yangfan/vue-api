@@ -36,6 +36,36 @@ let app =new Vue({
 })
       </code>
     </pre>
+
+    <h5>例子2：递归组件, 注意：只能用与Vue.component</h5>
+<pre v-pre>
+  <code>
+&lt;div id=&quot;app&quot;&gt;
+  &lt;p&gt;{{count}}&lt;/p&gt;
+  &lt;child-component :count=&quot;1&quot;&gt;&lt;/child-component&gt;
+&lt;/div&gt;
+
+Vue.component('child-component', {
+  'name': 'child-component',
+   props: {
+    count: {
+      type: Number,
+      default: 1
+    }
+   },
+    template: `
+      &lt;div class=&quot;child&quot;&gt;
+        &lt;p&gt;{{count}}&lt;/p&gt;
+        &lt;child-component :count=&quot;count + 1&quot; v-if=&quot;count &lt; 3&quot;&gt;&lt;/child-component&gt;
+      &lt;/div&gt;
+  `
+});
+
+new new({
+  el: '#app'
+})
+  </code>
+</pre>
   </div>
 </template>
 <style scoped>
@@ -59,7 +89,6 @@ let app =new Vue({
 
     },
     components: {
-
     }
   }
 </script>
