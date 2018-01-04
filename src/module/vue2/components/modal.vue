@@ -44,6 +44,7 @@
 
   // 实例方法/生命周期
   import v_next_tick from './$next_tick/index.vue'
+  import v_mount from './mount/index.vue'
   // 指令
   import v_pre from './v_pre/index.vue'
   import v_if from './v_if/index.vue'
@@ -106,7 +107,8 @@
       v_children,
       v_refs,
       v_slot,
-      v__slot
+      v__slot,
+      v_mount
     },
     watch: {}
   }

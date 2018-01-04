@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h3>extend</h3>
+    <h3>extendhe</h3>
     <ul>
       <li><strong>参数:</strong><code>{Object} options</code></li>
       <li><strong>用法:</strong><span>使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。<code>data</code>选项是特例，需要注意 - 在<code>Vue.extend()</code>中它必须是函数</span></li>

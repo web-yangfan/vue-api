@@ -200,7 +200,7 @@
         a(href="javascript:;") 实例方法/生命周期
         ul.menu-sub
           li
-            a(href="javascript:;") vm.$mount
+            a(href="javascript:;", @click="show('v_mount')") vm.$mount
           li
             a(href="javascript:;") vm.$forceUpdate
           li
