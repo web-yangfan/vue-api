@@ -28,17 +28,10 @@
     },
     methods: {
       updateNav () {
+        // 调用父组件方法
         this.$parent.updateNav()
-      }
-    },
-    watch: {
-      label () {
-        this.updateNav()
       }
     }
   }
 </script>
 
-<style scoped>
-
-</style>
