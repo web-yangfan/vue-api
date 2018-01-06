@@ -9,7 +9,6 @@
       <input type="number" v-model.number="numberMessage" placeholder="number">
       <p>{{typeof numberMessage}}</p>
     </label>
-
   </div>
 </template>
 

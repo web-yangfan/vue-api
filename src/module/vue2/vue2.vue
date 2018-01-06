@@ -329,6 +329,15 @@
             a(href="javascript:;", @click="show('v_children')") vm.$children
           li
             a(href="javascript:;", @click="show('v_refs')") vm.$refs
+      li
+        a(href="javascript:;")
+          small
+          | demo
+        ul.menu-sub
+          li
+            a(href="javascript:;", @click="show('demo1')")  数字输入框
+          li
+            a(href="javascript:;", @click="show('demo2')")  tab标签页组件
 </template>
 
 <script>

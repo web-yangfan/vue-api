@@ -11,23 +11,114 @@
         </ol>
       </li>
     </ul>
+
+    <pre v-pre>
+      <code class="html">
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;text&quot; v-model.lazy=&quot;lazyMessage&quot; placeholder=&quot;lazy&quot;&gt;
+      &lt;p&gt;{{lazyMessage}}&lt;/p&gt;
+    &lt;/label&gt;
+    &lt;br&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;number&quot; v-model.number=&quot;numberMessage&quot; placeholder=&quot;number&quot;&gt;
+      &lt;p&gt;{{typeof numberMessage}}&lt;/p&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+      </code>
+    </pre>
     <div class="demo-box">
       <demo4></demo4>
     </div>
 
+
+
     <br>
     <h3>v-model常用方法</h3>
     <h5 class="pb10">@input使，输入中文，没有选中汉字，也会触发</h5>
+    <pre v-pre>
+      <code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; @input=&quot;handlerInput&quot; /&gt;
+    &lt;p&gt;输入的内容是：{{message}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    props: [],
+    data () {
+      return {
+        message: &#x27;&#x27;
+      }
+    },
+    methods: {
+      handlerInput (e) {
+        this.message = e.target.value
+      }
+    }
+  }
+&lt;/script&gt;
+
+      </code>
+    </pre>
     <div class="demo-box">
       <demo1></demo1>
     </div>
 
     <h5 class="pb10">radio、checkbox、select等表单直接使用v-model，不用加name属性</h5>
+    <pre v-pre>
+      <code class="html">
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;label style=&quot;margin-right: 10px&quot;&gt;
+      &lt;input type=&quot;radio&quot; v-model=&quot;gender&quot; value=&quot;男&quot;&gt; 男
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; v-model=&quot;gender&quot; value=&quot;女&quot;&gt; 女
+    &lt;/label&gt;
+    &lt;p&gt;{{gender}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+      </code>
+    </pre>
     <div class="demo-box">
       <demo2></demo2>
     </div>
 
     <h5 class="pb10">checkbox :true-value和:false-value使用</h5>
+    <pre v-pre>
+      <code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;label style=&quot;margin-right: 10px&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; v-model=&quot;toggle&quot;  :true-value=&quot;value1&quot; :false-value=&quot;value2&quot;&gt; 男
+    &lt;/label&gt;
+    &lt;p&gt;{{toggle}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    props: [],
+    data () {
+      return {
+        toggle: false,
+        value1: &#x27;选中了&#x27;,
+        value2: &#x27;没有选中&#x27;
+      }
+    },
+    methods: {
+    }
+  }
+&lt;/script&gt;
+
+      </code>
+    </pre>
     <div class="demo-box">
       <demo3></demo3>
     </div>

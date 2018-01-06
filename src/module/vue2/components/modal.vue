@@ -61,6 +61,8 @@
   import v_model from './v_model/index.vue'
   import v_slot from './slot/index.vue'
   // 其他
+  import demo1 from './demo/demo1/index.vue'
+  import demo2 from './demo/demo2/index.vue'
 
   export default {
     props: ['currentView', 'isShow'],
@@ -108,7 +110,9 @@
       v_refs,
       v_slot,
       v__slot,
-      v_mount
+      v_mount,
+      demo1,
+      demo2
     },
     watch: {}
   }

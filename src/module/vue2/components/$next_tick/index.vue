@@ -80,7 +80,7 @@ export default {
         text: ''
       }
     },
-    mounted() {
+    mounted () {
     },
     methods: {
       updateDate() {
@@ -95,8 +95,6 @@ export default {
             this.updateAfter()
           })
         }, 5000)
-
-
       },
       updateAfter() {
         this.text = '更新完成'
