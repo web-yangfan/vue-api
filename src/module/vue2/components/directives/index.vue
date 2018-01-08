@@ -96,7 +96,7 @@
       <input type="text" v-maxlength="demo1.str" v-model="demo1.str" placeholder="长度10个">
     </div>
 
-    <h5>例子2:</h5>
+    <h5>例子2: 传多个参数</h5>
     <pre>
       <code class="html">
 &lt;div v-demo=&quot;{ color: &#x27;white&#x27;, text: &#x27;hello!&#x27; }&quot;&gt;
@@ -163,7 +163,7 @@ numberonly: {
       </code>
     </pre>
 
-    <h5>例子5: 账号输入，自动切换焦点</h5>
+    <h5>例子4: 账号输入，自动切换焦点</h5>
     <div class="demo-box">
       <div class="number-box">
         <input type="text" name="number1" v-autofocus="0" v-model="demo5.num0" maxlength="1">
@@ -190,7 +190,6 @@ numberonly: {
 &lt;/div&gt;
       </code>
     </pre>
-
     <pre>
       <code class="js">
 autofocus: {
@@ -232,6 +231,16 @@ autofocus: {
 }
       </code>
     </pre>
+
+    <h5>例子5: 外部关闭的下拉菜单</h5>
+    <div class="demo-box">
+      <clickoutsideComponent></clickoutsideComponent>
+    </div>
+
+    <h5>例子6: 实时时间转换</h5>
+    <div class="demo-box">
+      <timeComponent></timeComponent>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -244,10 +253,15 @@ autofocus: {
   }
 </style>
 <script>
-
+  import maxlength from './maxlength.js'
+  import parameter from './parameter.js'
+  import numberonly from './numberonly.js'
+  import autofocus from './autofocus.js'
+  import clickoutsideComponent from './clickoutside/clickoutside.vue'
+  import timeComponent from './time/time.vue'
   export default {
     props: [],
-    data() {
+    data () {
       return {
         demo1: {
           str: ''
@@ -266,99 +280,23 @@ autofocus: {
         }
       }
     },
-    mounted() {
+    mounted () {
     },
     directives: {
       // 限制输入的字符长度
-      maxlength: {
-        bind(el, binding, vnode) {
-          // console.log('bind')
-        },
-        inserted() {
-          // console.log('inserted')
-        },
-        update(el, binding, vnode) {
-          // el.value = '测试'
-         // console.log(binding.value)
-          let str = binding.value
-          if(str.length >= 10) {
-            el.value = str.substr(0, 10)
-          }
-        },
-        componentUpdated() {
-          // console.log('componentUpdated')
-        },
-        unbind() {
-          // console.log('unbind')
-        }
-      },
-      demo: {
-        bind(el, binding, vnode) {
-          $(el).children('span').eq(0).html(binding.value.color)
-          $(el).children('span').eq(1).html(binding.value.text)
-        },
-        inserted() {
-          // console.log('inserted')
-        },
-        update() {
-          // console.log('update')
-        },
-        componentUpdated() {
-          // console.log('componentUpdated')
-        },
-        unbind() {
-          // console.log('unbind')
-        }
-      },
+      maxlength: maxlength,
+      demo: parameter,
       // 支持输入数字
-      numberonly: {
-        update(el, binding, vnode) {
-          let val = el.value
-          el.value = val.replace(/\D+/, '')
-        }
-      },
+      numberonly: numberonly,
       // 数字自动切换焦点
-      autofocus: {
-
-        bind(el, binding, vnode) {
-
-        },
-        inserted(el, binding, vnode) {
-          let parentNode = el.parentNode
-          let inputArr = parentNode.querySelectorAll('input')
-          // TODO 获取input框父节点
-          el.addEventListener('keydown', function (e) {
-            let index = binding.value
-            if (e.keyCode === 8 && el.value.length === 0 & index > 0) {
-              console.log(index)
-              // 自动焦点切换
-              inputArr[--index].focus()
-            }
-          })
-          el.addEventListener('keyup', function (e) {
-            let val = el.value
-            let index = binding.value
-            el.value = val.replace(/\D+/, '')
-            // 判断是否值
-            if (el.value.length === 1 && index < 7 && e.keyCode !== 8) {
-              // 自动焦点切换
-              inputArr[++index].focus()
-            }
-          })
-        },
-        update(el, binding, vnode) {
-
-        },
-        componentUpdated() {
-          // console.log('componentUpdated')
-        },
-        unbind() {
-          // console.log('unbind')
-        }
-      },
+      autofocus: autofocus
     },
-    methods: {},
-    components: {},
+    methods: {
+    },
+    components: {
+      clickoutsideComponent,
+      timeComponent
+    },
     watch: {}
   }
 </script>
