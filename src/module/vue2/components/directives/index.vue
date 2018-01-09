@@ -45,7 +45,17 @@
         除了 <code>el</code> 之外，其它参数都应该是只读的，尽量不要修改他们。如果需要在钩子之间共享数据，建议通过元素的 <strong>dataset</strong> 来进行。
       </li>
     </ul>
-
+    <ul>
+      <span class="warning">例子列表：</span>
+      <ol>
+        <li><code>1、限制输入的字符长度</code></li>
+        <li><code>2、传多个参数</code></li>
+        <li><code>3、只能输入数字</code></li>
+        <li><code>4、账号输入，自动切换焦点</code></li>
+        <li><code>5、外部关闭的下拉菜单</code></li>
+        <li><code>6、实时时间转换</code></li>
+      </ol>
+    </ul>
     <h5>例子1:</h5>
     <pre>
       <code class="html">
@@ -236,11 +246,229 @@ autofocus: {
     <div class="demo-box">
       <clickoutsideComponent></clickoutsideComponent>
     </div>
+    <pre v-pre>
+      <code>
+&lt;template&gt;
+  &lt;div class=&quot;main&quot; v-clickoutside=&quot;handlerClose&quot;&gt;
+    &lt;button @click=&quot;show = !show&quot; class=&quot;btn&quot;&gt;点击显示下拉菜单&lt;/button&gt;
+    &lt;div class=&quot;dropdown&quot; v-show=&quot;show&quot;&gt;
+      &lt;p&gt;下拉框的内容，点击外面区域可以关闭&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  import clickoutside from &#x27;./clickoutside.js&#x27;
+  export default {
+    name: &#x27;clickoutside&#x27;,
+    directives: {
+    // 外部关闭的下拉菜单
+      clickoutside: clickoutside
+    },
+    data () {
+      return {
+        show: false
+      }
+    },
+    methods: {
+      handlerClose () {
+        this.show = false
+      }
+    }
+  }
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;stylus&quot;&gt;
+.main
+  width: 125px
+  .btn
+    display: block
+    width: 100%
+    color: #fff
+    background-color: #39f
+    border: 0
+    padding: 6px
+    text-align: center
+    font-size: 12px
+    border-radius: 4px
+    cursor: pointer
+    outline: none
+    position: relative
+  .btn:active
+    top: 1px
+    left: 1px
+  .dropdown
+    width: 100%
+    height: 150px
+    margin: 5px 0
+    font-size: 12px
+    background-color: #fff
+    border-radius: 4px
+    box-shadow: 0 1px 6px rgba(0,0,0,.2)
+    p
+      display: inline-block
+      padding: 6px
+&lt;/style&gt;
+      </code>
+    </pre>
+
+    <pre v-pre>
+      <code>
+// clickoutside.js 文件
+// 外部关闭的下拉菜单
+export default {
+  bind (el, binding, vnode) {
+    function documentHandler (e) {
+      // contains 是用来判断A元素是否包含B元素
+      // 判断点击区域是否是指令所在的元素内部，是，就跳出函数，不往下执行
+      if (el.contains(e.target)) {
+        return false
+      }
+      // 判断当前指令有没有写表达式
+      if (binding.expression) {
+        // 执行当前上下文 methods 中指定的函数
+        binding.value(e)
+      }
+    }
+    // 在自定义指令中，不能用this.xxx的形式在上下文中声明一个变量，所以用了el.__vueClickOutside__引用了documentHandler，这样可以在unbind钩子里移除对document的click对象
+    el.__vueClickOutside__ = documentHandler
+    document.addEventListener(&#x27;click&#x27;, documentHandler)
+  },
+  unbind (el, binding) {
+    // 移除事件，如果不移除，当组件或元素销毁时，它仍然存在于内存中
+    document.removeEventListener(&#x27;click&#x27;, el.__vueClickOutside__)
+    delete el.__vueClickOutside__
+  }
+}
+
+      </code>
+    </pre>
 
     <h5>例子6: 实时时间转换</h5>
     <div class="demo-box">
       <timeComponent></timeComponent>
     </div>
+    <pre v-pre>
+   <code>
+&lt;!-- vue文件 --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;div v-time=&quot;timeNow&quot;&gt;&lt;/div&gt;
+    &lt;div v-time=&quot;timeBefore&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  import time from &#x27;./time.js&#x27;
+  export default {
+    directives: {
+    // 实时时间转换指令
+      time: time
+    },
+    data () {
+      return {
+        timeNow: (new Date()).getTime(),
+        // 2018/1/8
+        timeBefore: 1488930695721
+      }
+    },
+    mounted () {
+    },
+    methods: {
+    }
+  }
+&lt;/script&gt;
+
+   </code>
+ </pre>
+    <pre v-pre>
+      <code>
+// time.js
+// 实时时间转换
+import timeFn from './timeFn.js'
+export default {
+  // 在bind钩子里,将指令v-time表达式的值binding.value作为参数传入Time.getFormatTime()方法得到格式化时间，在通过el.innerHTML写入指令所在元素，定时器el.__timeout每分钟触发一次更新时间，并且在unbind钩子里清除掉
+  bind (el, binding, vnode) {
+    el.innerHTML = timeFn.getFormatTime(binding.value)
+    el.__timeout__ = setInterval(function () {
+      el.innerHTML = timeFn.getFormatTime(binding.value)
+    }, 6000)
+  },
+  unbind (el, binding) {
+    clearInterval(el.__timeout__)
+    delete el.__timeout__
+  }
+}
+
+      </code>
+    </pre>
+    <pre v-pre>
+      <code>
+// timeFn.js
+let time = {}
+// 获取当期时间错
+time.getUnix = () => {
+  let date = new Date()
+  return date.getTime()
+}
+
+// 获取今天0点0分0秒的时间戳
+time.getTodayUnix = () => {
+  let date = new Date()
+  date.setHours(0)
+  date.setMinutes(0)
+  date.setSeconds(0)
+  date.setMilliseconds(0)
+  return date.getTime()
+}
+
+// 获取今年1月1日0点0分0秒的时间戳
+time.getYearUnix = () => {
+  let date = new Date()
+  date.setMonth(0)
+  date.setDate(1)
+  date.setHours(0)
+  date.setMinutes(0)
+  date.setSeconds(0)
+  date.setMilliseconds(0)
+  return date.getTime()
+}
+
+// 获取标准年月日
+time.getLastDate = (time) => {
+  let date = new Date(time)
+  let month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+  let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+  return date.getFullYear() + '-' + month + '-' + day
+}
+
+// 转换时间
+time.getFormatTime = (timestamp) => {
+  let now = time.getUnix() // 当前时间戳
+  let today = time.getTodayUnix() // 今天0点时间戳
+  let year = time.getYearUnix() // 今年0点时间戳
+  let timer = (now - timestamp) / 1000 // 转换为秒级时间戳
+  let tip = ''
+  if (timer <= 0) {
+    tip = '刚刚'
+  } else if (Math.floor(timer / 60) <= 0) {
+    tip = '刚刚'
+  } else if (timer < 3600) {
+    tip = Math.floor(timer / 60) + '分钟前'
+  } else if (timer >= 3600 && (timestamp - today >= 0)) {
+    tip = Math.floor(timer / 3600) + '小时前'
+  } else if (timer / 86400 <= 31) {
+    tip = Math.ceil(timer / 86400) + '天前'
+  } else {
+    tip = time.getLastDate(timestamp)
+  }
+  return tip
+}
+
+export default time
+
+      </code>
+    </pre>
   </div>
 </template>
 <style scoped>
