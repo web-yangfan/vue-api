@@ -27,11 +27,13 @@
   import filters from './filters/index.vue'
   // 选项/数据
   import v_props from './v_props/index.vue'
+  import v_watch from './watch/index.vue'
   // 选项/DOM
   // 选项/生命周期钩子
   // 选项/资源
   // 选项/组合
   import v_mixins from './mixins/index.vue'
+  import v_extends from './extends/index.vue'
   // 选项/其他
   // 实例属性
   import v_parent from './parent/index.vue'
@@ -112,7 +114,9 @@
       v__slot,
       v_mount,
       demo1,
-      demo2
+      demo2,
+      v_watch,
+      v_extends
     },
     watch: {}
   }

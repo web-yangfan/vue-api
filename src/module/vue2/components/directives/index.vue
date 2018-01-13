@@ -44,6 +44,10 @@
         <strong class="warning">注意:</strong>
         除了 <code>el</code> 之外，其它参数都应该是只读的，尽量不要修改他们。如果需要在钩子之间共享数据，建议通过元素的 <strong>dataset</strong> 来进行。
       </li>
+      <li>
+        <strong class="warning">总结:</strong>
+        在自定义指令里，理论上可以任意操作DOM，但是又违背了vue的初衷，所有对于大幅度的DOM变动，应该使用组件
+      </li>
     </ul>
     <ul>
       <span class="warning">例子列表：</span>

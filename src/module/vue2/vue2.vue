@@ -68,7 +68,7 @@
           li
             a(href="javascript:;") methods
           li
-            a(href="javascript:;") watch
+            a(href="javascript:;", @click="show('v_watch')") watch
       li
         a(href="javascript:;") 选项/DOM
         ul.menu-sub
@@ -123,7 +123,7 @@
           li
             a(href="javascript:;", @click="show('v_mixins')") mixins
           li
-            a(href="javascript:;") extends
+            a(href="javascript:;", @click="show('v_extends')") extends
           li
             a(href="javascript:;") provide / inject
 
@@ -179,7 +179,7 @@
         a(href="javascript:;") 实例方法/数据
           ul.menu-sub
             li
-              a(href="javascript:;") vm.$watch
+              a(href="javascript:;", @click="show('v_watch')") vm.$watch
             li
               a(href="javascript:;") vm.$set
             li
