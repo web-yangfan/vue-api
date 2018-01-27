@@ -29,6 +29,7 @@
   import v_props from './v_props/index.vue'
   import v_watch from './watch/index.vue'
   // 选项/DOM
+  import v_render from './render/index.vue'
   // 选项/生命周期钩子
   // 选项/资源
   // 选项/组合
@@ -116,7 +117,8 @@
       demo1,
       demo2,
       v_watch,
-      v_extends
+      v_extends,
+      v_render
     },
     watch: {}
   }

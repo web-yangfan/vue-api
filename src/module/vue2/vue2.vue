@@ -77,7 +77,7 @@
           li
             a(href="javascript:;") template
           li
-            a(href="javascript:;") render
+            a(href="javascript:;",  @click="show('v_render')") render
           li
             a(href="javascript:;") renderError
 
