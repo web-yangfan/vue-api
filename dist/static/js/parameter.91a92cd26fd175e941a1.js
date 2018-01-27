@@ -1,0 +1,2 @@
+webpackJsonp([6],{Pnn2:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),function(n){e.default={bind:function(e,t,c){n(e).children("span").eq(0).html(t.value.color),n(e).children("span").eq(1).html(t.value.text)},inserted:function(){},update:function(){},componentUpdated:function(){},unbind:function(){}}}.call(e,t("tra3"))}},["Pnn2"]);
+//# sourceMappingURL=parameter.91a92cd26fd175e941a1.js.map

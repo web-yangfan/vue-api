@@ -1,0 +1,2 @@
+webpackJsonp([4],{lHOE:function(o,l){o.exports={created:function(){this.hello()},methods:{hello:function(){console.log("hello from mixin!")}}}}},["lHOE"]);
+//# sourceMappingURL=mixin.4e6957e05b9deaa1dce3.js.map

@@ -1,0 +1,2 @@
+webpackJsonp([8],{NFT4:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={bind:function(n,e,t){},inserted:function(){},update:function(n,e,t){var u=e.value;u.length>=10&&(n.value=u.substr(0,10))},componentUpdated:function(){},unbind:function(){}}}},["NFT4"]);
+//# sourceMappingURL=maxlength.0a4164d3819cdbef9a9a.js.map
