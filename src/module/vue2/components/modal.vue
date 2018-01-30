@@ -1,8 +1,10 @@
-<template lang="jade">
-  .modal-box(v-if="isShow")
-    button.close-btn(@click="hide") x
-    .content-box
-      component(:is="currentView")
+<template>
+  <div v-if="isShow" class="modal-box">
+    <button @click="hide" class="close-btn">x</button>
+      <div class="content-box">
+      <component :is="currentView"></component>
+    </div>
+  </div>
 </template>
 <style scoped>
 </style>
