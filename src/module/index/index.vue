@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="../../img/logo.png">
-    <h1>index</h1>
+    <a href="http://vue-api.igmc.com.cn/vue2.html">vue-api</a>
   </div>
 </template>
 
